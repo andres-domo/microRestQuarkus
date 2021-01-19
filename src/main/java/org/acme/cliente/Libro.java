@@ -2,10 +2,10 @@ package org.acme.cliente;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 
+@JsonIgnoreType(value = true)
 public class Libro {
 
 	private int id;

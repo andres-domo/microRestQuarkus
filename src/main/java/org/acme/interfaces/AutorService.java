@@ -3,6 +3,7 @@ package org.acme.interfaces;
 import java.util.List;
 import java.util.Optional;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,6 +19,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 @Path("/autor")
 @RegisterRestClient
+@ApplicationScoped
 public interface AutorService {
 
 	// url del micro al que quieres llamar http://localhost:8080/autor/listar

@@ -14,7 +14,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import org.acme.cliente.Libro;
+
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.jboss.resteasy.annotations.jaxrs.PathParam;
