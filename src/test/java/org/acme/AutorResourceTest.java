@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.inject.Inject;
 
 import org.acme.cliente.Autor;
+import org.acme.cliente.Libro;
 import org.acme.interfaces.AutorService;
 import org.acme.resources.AutorResource;
 
@@ -63,37 +64,40 @@ public class AutorResourceTest {
 
 	}
 
-	/*
-	 * @Test public void TestEliminarAutor() {
-	 * 
-	 * 
-	 * Autor a = new Autor(10, "SinNombre", "SinApellido",null);
-	 * 
-	 * Mockito.when(Mockautorservice.listado_unitario(10)).thenReturn(null);
-	 * Mockautorservice.eliminarAutor(a.getId());
-	 * Assertions.assertEquals(Mockautorservice.listado_unitario(10), null);
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * @Test public void TestguardarAutor(){
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * }
-	 * 
-	 * @Test public void TestactualizarAutor() {
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
+	@Test
+	public void TestEliminarAutor() {
+
+		Autor a = new Autor(10, "Francisco", "Alegre", null);
+
+		Mockito.when(Mockautorservice.listado_unitario(10)).thenReturn(null);
+		Mockautorservice.eliminarAutor(a.getId());
+		Assertions.assertEquals(Mockautorservice.listado_unitario(10), null);
+
+	}
+
+	@Test
+	public void TestguardarAutor() {
+
+		Autor nuevo_autor = new Autor(1, "pepe", "clemente", null);
+		Optional<Autor> b = Optional.of(nuevo_autor);
+
+		Mockito.when(Mockautorservice.listado_unitario(Mockito.anyInt())).thenReturn(b);
+		Mockautorservice.guardarAutor(nuevo_autor);
+		Assertions.assertNotEquals(b, null);
+		Assertions.assertEquals(b, Mockautorservice.listado_unitario(1));
+
+	}
+
+	@Test
+	public void TestactualizarAutor() {
+
+		Autor uno = new Autor(1, "Gaspar", "Gonzalez", null);
+
+		uno.setId(2);
+		uno.setApellidos("Martinez");
+
+		Mockautorservice.actualizarAutor(uno);
+
+	}
 
 }

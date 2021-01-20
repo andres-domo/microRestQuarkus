@@ -13,6 +13,7 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import org.acme.cliente.Autor;
 import org.acme.cliente.Libro;
 import org.acme.interfaces.LibroService;
 import org.acme.resources.LibroResource;
@@ -68,22 +69,39 @@ class LibroResourceTest {
 
 	}
 
-	/*
-	 * @Test public void testGuardar() {
-	 * 
-	 * Libro libro2 = new Libro(3, "las obejas negras se vuelven cabras locas",
-	 * 234352, null);
-	 * 
-	 * List<Libro> todosLoslibros = new ArrayList<Libro>();
-	 * todosLoslibros.add(libro2); libroresource.guardar(libro2);
-	 * 
-	 * 
-	 * //Mockito.when(Mocklibroservicio.guardarlibro(libro2)).;
-	 * 
-	 * }
-	 */
+	@Test
+	public void TestEliminarLibro() {
 
-	// Assertions.assertEquals("Los comederos de la parte de
-	// atras",libroresource.guardar(b).gettitulo());
+		Libro a = new Libro(10, "Narcisos en la noche", 4536535, null);
 
+		Mockito.when(Mocklibroservicio.listado_unitario(10)).thenReturn(null);
+		Mocklibroservicio.eliminarlibro(a.getId());
+		Assertions.assertEquals(Mocklibroservicio.listado_unitario(10), null);
+
+	}
+
+	@Test
+	public void TestguardarLibro() {
+
+		Libro nuevo_libro = new Libro(1, "Campanas del Alba", 7858575, null);
+		Optional<Libro> b = Optional.of(nuevo_libro);
+
+		Mockito.when(Mocklibroservicio.listado_unitario(Mockito.anyInt())).thenReturn(b);
+		Mocklibroservicio.guardarlibro(nuevo_libro);
+		Assertions.assertNotEquals(b, null);
+		Assertions.assertEquals(b, Mocklibroservicio.listado_unitario(1));
+
+	}
+
+	@Test
+	public void TestactualizarLibro() {
+
+		Libro uno = new Libro(1, "las triquiñuelas de Gaspar", 565857, null);
+
+		uno.setId(2);
+		uno.setIsbn(332211345);
+
+		Mocklibroservicio.actualizarlibro(uno);
+
+	}
 }
