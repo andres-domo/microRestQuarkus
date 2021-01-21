@@ -75,8 +75,8 @@ class LibroResourceTest {
 		Libro a = new Libro(10, "Narcisos en la noche", 4536535, null);
 
 		Mockito.when(Mocklibroservicio.listado_unitario(10)).thenReturn(null);
-		Mocklibroservicio.eliminarlibro(a.getId());
-		Assertions.assertEquals(Mocklibroservicio.listado_unitario(10), null);
+		libroresource.eliminar(a.getId());
+		Assertions.assertEquals(libroresource.listado_unitario(10), null);
 
 	}
 
@@ -87,9 +87,9 @@ class LibroResourceTest {
 		Optional<Libro> b = Optional.of(nuevo_libro);
 
 		Mockito.when(Mocklibroservicio.listado_unitario(Mockito.anyInt())).thenReturn(b);
-		Mocklibroservicio.guardarlibro(nuevo_libro);
+		libroresource.guardar(nuevo_libro);
 		Assertions.assertNotEquals(b, null);
-		Assertions.assertEquals(b, Mocklibroservicio.listado_unitario(1));
+		Assertions.assertEquals(b, libroresource.listado_unitario(1));
 
 	}
 
@@ -101,7 +101,7 @@ class LibroResourceTest {
 		uno.setId(2);
 		uno.setIsbn(332211345);
 
-		Mocklibroservicio.actualizarlibro(uno);
+		libroresource.actualizar(uno);
 
 	}
 }

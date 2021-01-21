@@ -70,8 +70,8 @@ public class AutorResourceTest {
 		Autor a = new Autor(10, "Francisco", "Alegre", null);
 
 		Mockito.when(Mockautorservice.listado_unitario(10)).thenReturn(null);
-		Mockautorservice.eliminarAutor(a.getId());
-		Assertions.assertEquals(Mockautorservice.listado_unitario(10), null);
+		autorresource.eliminar(a.getId());
+		Assertions.assertEquals(autorresource.listado_unitario(10), null);
 
 	}
 
@@ -82,9 +82,9 @@ public class AutorResourceTest {
 		Optional<Autor> b = Optional.of(nuevo_autor);
 
 		Mockito.when(Mockautorservice.listado_unitario(Mockito.anyInt())).thenReturn(b);
-		Mockautorservice.guardarAutor(nuevo_autor);
+		autorresource.guardar(nuevo_autor);
 		Assertions.assertNotEquals(b, null);
-		Assertions.assertEquals(b, Mockautorservice.listado_unitario(1));
+		Assertions.assertEquals(b, autorresource.listado_unitario(1));
 
 	}
 
@@ -96,7 +96,7 @@ public class AutorResourceTest {
 		uno.setId(2);
 		uno.setApellidos("Martinez");
 
-		Mockautorservice.actualizarAutor(uno);
+		autorresource.actualizar(uno);
 
 	}
 

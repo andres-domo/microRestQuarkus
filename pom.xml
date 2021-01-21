@@ -82,13 +82,15 @@
 			<artifactId>quarkus-test-h2</artifactId>
 		</dependency>
 
-
-
-
-
-
-
-
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.quarkus</groupId>
+			<artifactId>quarkus-micrometer</artifactId>
+			<version>1.10.3.Final</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
